@@ -152,22 +152,30 @@ unset($pdo);
         </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script>
-        // Inicializar o seletor personalizado
-        $("select[name='servico']").select2();
+    // ...
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+    // Inicializar o seletor personalizado
+    $("select[name='servico']").select2();
 
-        // Obtenha a data atual
-        var currentDate = new Date();
+    // Obtém a data atual
+    var currentDate = new Date();
 
-        // Configurar o flatpickr
-        flatpickr("#datepicker", {
-            dateFormat: "Y-m-d",
-            minDate: currentDate, // Restringir a data mínima à data atual
-        });
-    </script>
+    // Configurar o flatpickr
+    flatpickr("#datepicker", {
+        dateFormat: "Y-m-d",
+        minDate: currentDate, // Restringir a data mínima à data atual
+        disable: [
+            function(date) {
+                // Desabilite os domingos (0 é domingo, 1 é segunda-feira, etc.)
+                return (date.getDay() === 0);
+            }
+        ],
+    });
+</script>
+
 </body>
 </html>
