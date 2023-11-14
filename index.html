@@ -12,25 +12,65 @@
     <header class="cabecalho">
         <nav>
             <ul class="ListNav">
-                <li><a href="index.html">CORTES</a></li>
-                <li><a href="index.html">CORTES</a></li>
-                <img class="Logo" src="Logo.jpeg" alt="">
-                <li><a href="agendamento/register.php">HORARIO</a></li>
-                <li><a href="">MARCAR HORARIO</a></li>
+                <li><a href="index.html">SOBRE NÓS</a></li>
+                <li><a href="index.html">SERVIÇOS</a></li>
+                <img class="Logo" src="Logo.jpeg">
+                <li><a href="agendamento/register.php">AGENDAMENTO</a></li>
+                <li><a href="">LOGIN??</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="Imagem1">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, sed impedit velit et maxime, pariatur quod, a tenetur quae repellendus id distinctio reiciendis est vel molestias. Sapiente soluta architecto odit.</p>
-            <img class="Img" src="" alt="Sua Imagem">
+        <div class="Titulo">
+            <h1>BEM VINDO À IMPERIAL</h1>
         </div>
-        <div class="Imagem2">
-            <img class="Img" src="" alt="Sua Imagem">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio, sed impedit velit et maxime, pariatur quod, a tenetur quae repellendus id distinctio reiciendis est vel molestias. Sapiente soluta architecto odit.</p>
 
+        <div class="divisao">
+            <h2>SOBRE NÓS</h2>
         </div>
+
+        <div class="sobreNos">
+            <p>Texto aqui sobre a barbeariablabla balbalbbal balba l b a lba lba l b a l a bl a b l a b b a la b l a bl a b labl a bl abal b la bl ab a   lbalbalbalba lbl abalbl ablabalbalbal balbalbalb alb a l b a l a b l a b l a b lab l a b l a b a l b a l b a l b a l b albaa</p>
+            <img class="Img" src="" alt="Sua Imagem">
+        </div>
+
+        <div class="localizacao">
+            <p>Venha visitar a barbearia! Estamos localizados na rua blabalbalbalba</p>
+            <!-- Div para o mapa -->
+            <div id="mapa" style="height: 400px;"></div>
+        </div>
+
+        <div class="divisao">
+            <h2>SERVIÇOS</h2>
+        </div>
+        <div class="SERVICOS">
+        </div>
+
     </main>
+
+    <!-- Adicionando script da API do Google Maps -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=inicializarMapa"></script>
+
+    <script>
+        function inicializarMapa() {
+            // Coordenadas da sua localização no Google Maps
+            var coordenadas = { lat: -23.550520, lng: -46.633308 };
+
+            // Opções do mapa
+            var opcoesMapa = {
+                zoom: 14,
+                center: coordenadas
+            };
+
+            var mapa = new google.maps.Map(document.getElementById('mapa'), opcoesMapa);
+
+            var marcador = new google.maps.Marker({
+                position: coordenadas,
+                map: mapa,
+                title: 'Imperial Barbearia'
+            });
+        }
+    </script>
 </body>
 
 </html>

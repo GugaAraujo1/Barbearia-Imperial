@@ -3,8 +3,39 @@
     padding: 0;
 }
 
-body{
+body {
     background-color: rgb(55, 55, 55);
+    height: 200rem;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Arbutus';
+    font-size: 4rem;
+    font-style: bold;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    font-family: 'Arbutus';
+    font-size: 2.5rem;
+    font-style: bold;
+}
+
+a {
+    font-family: Jim Nightshade;
+    font-size: 2.5rem;
+    text-decoration: none;
+}
+
+p {
+    color: white;
+    font-family: Jim Nightshade;
+    font-size: 1.5rem;
+    text-decoration: none;
+    align-self: center;
+    text-align: justify;
 }
 
 .cabecalho {
@@ -13,7 +44,7 @@ body{
     align-items: center;
     justify-content: space-around;
     padding: 3%;
-    height: 20vh;
+    height: 2rem;
 }
 
 .cabecalho nav ul {
@@ -30,16 +61,18 @@ body{
     font-weight: 500;
     font-style: normal;
     cursor: pointer;
-    margin-right: 20px; /* Adicione uma margem direita para separar os itens */
+    margin-right: 20px;
+    /* Adicione uma margem direita para separar os itens */
 }
 
 .Logo {
-    height: 30vh;
+    height: 9rem;
 }
 
-.Main{
+.Main {
     padding-bottom: 20%;
 }
+
 .ListNav {
     display: flex;
     align-items: center;
@@ -55,49 +88,56 @@ body{
     font-size: 20px;
 }
 
-.Imagem1 {
-    
-    margin-top: 5%;
+.Titulo {
+    height: 10rem;
+    width: 80%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: 5em;
+    border-radius: 2.25rem;
+    background: #F2B749;
+}
+
+.divisao {
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    background: #545151;
+}
+
+
+.sobreNos {
+    display: flex;
     align-items: center;
-    color: white;
+    justify-content: center;
     font-size: 20px;
 }
 
-.Imagem1 p {
-    text-align: left;
-    margin-right: 15%;
-    max-width: 30%;
+.sobreNos p {
+    width: 50%;
+    margin-right: 2rem;
 }
 
-.Imagem1 .Img {
-    width:650px;
-    height:500px;
+.sobreNos .Img {
+    width: 40rem;
+    height: 25rem;
     background-color: black;
     border-radius: 25px;
     text-align: right;
 }
 
-.Imagem2 {
-    margin-top: 5%;
+.localizacao{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 20px;
+    margin: 0 auto;
+    margin-top: 5rem;
+    margin-bottom: 5em;
 }
 
-.Imagem2 p {
-    text-align: left;
-    margin-left: 15%;
-    max-width: 30%;
-}
-
-.Imagem2 .Img {
-    width:650px;
-    height:500px;
-    background-color: black;
-    border-radius: 25px;
-    text-align: left;
-}
