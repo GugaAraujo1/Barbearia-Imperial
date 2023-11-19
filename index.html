@@ -14,47 +14,91 @@
             <ul class="ListNav">
                 <li><a href="index.html">SOBRE NÓS</a></li>
                 <li><a href="reserva.html">SERVIÇOS</a></li>
-                <img class="Logo" src="Logo.jpeg">
+                <img class="Logo" src="assets/Logo.jpeg">
                 <li><a href="agendamento/agendar.php">AGENDAMENTO</a></li>
                 <li><a href="">LOGIN??</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <div class="Titulo">
-            <h1>BEM VINDO À IMPERIAL</h1>
-        </div>
+    <div class="principal">
 
-        <div class="divisao">
-            <h2>SOBRE NÓS</h2>
-        </div>
-
-        <div class="sobreNos">
-            <p>Texto aqui sobre a barbeariablabla balbalbbal balba l b a lba lba l b a l a bl a b l a b b a la b l a bl a b labl a bl abal b la bl ab a   lbalbalbalba lbl abalbl ablabalbalbal balbalbalb alb a l b a l a b l a b l a b lab l a b l a b a l b a l b a l b a l b albaa</p>
-            <img class="Img" src="" alt="Sua Imagem">
-        </div>
-
-        <div class="localizacao">
-            <p>Venha visitar a barbearia! Estamos localizados na rua blabalbalbalba</p>
-            <!-- Div para o mapa -->
-            <div id="mapa" style="height: 400px;"></div>
-        </div>
-
-        <div class="divisao">
-            <h2>SERVIÇOS</h2>
-        </div>
-        <div class="servicos">
-            <div class="servico">
-                <p class="nomeServico">CORTE</p>
-                <img class="imagemServico" src="Corte.png" alt="">
-                <p class="precoServico">R$ 25,00</p>
+        <main>
+            <div class="Titulo">
+                <h1>BEM VINDO À IMPERIAL</h1>
             </div>
-        </div>
 
-    </main>
+            <div class="divisao">
+                <h2>SOBRE NÓS</h2>
+            </div>
+
+            <div class="sobreNos">
+                <p>Texto aqui sobre a barbeariablabla balbalbbal balba l b a lba lba l b a l a bl a b l a b b a la b l a
+                    bl a b labl a bl abal b la bl ab a lbalbalbalba lbl abalbl ablabalbalbal balbalbalb alb a l b a l a
+                    b l a b l a b lab l a b l a b a l b a l b a l b a l b albaa</p>
+                <img class="Img" src="" alt="Sua Imagem">
+            </div>
+
+            <div class="localizacao">
+                <p>Venha visitar a barbearia! Estamos localizados na rua blabalbalbalba</p>
+                <!-- Div para o mapa -->
+                <div id="mapa" style="height: 400px;"></div>
+            </div>
+
+            <div class="divisao">
+                <h2>SERVIÇOS</h2>
+            </div>
+            <div class="servicos">
+                <div class="servico">
+                    <p class="nomeServico">CORTE</p>
+                    <img class="imagemServico" src="assets/Corte.png" alt="">
+                    <p class="precoServico">R$ 25,00</p>
+                </div>
+                <div class="servico">
+                    <p class="nomeServico">BARBA</p>
+                    <img class="imagemServico" src="assets/Corte.png" alt="">
+                    <p class="precoServico">R$ 25,00</p>
+                </div>
+                <div class="servico">
+                    <p class="nomeServicoLongo">CORTE E BARBA</p>
+                    <img class="imagemServico" src="assets/Corte.png" alt="">
+                    <p class="precoServico">R$ 25,00</p>
+                </div>
+            </div>
+            <div class="servicos">
+                <div class="servico">
+                    <p class="nomeServicoLongo">SOBRANCELHA</p>
+                    <img class="imagemServico" src="assets/Corte.png" alt="">
+                    <p class="precoServico">R$ 25,00</p>
+                </div>
+                <div class="servico">
+                    <p class="nomeServico">balbalbla</p>
+                    <img class="imagemServico" src="assets/Corte.png" alt="">
+                    <p class="precoServico">R$ 25,00</p>
+                </div>
+                <div class="servico">
+                    <p class="nomeServicoLongo">balblabalbalbal</p>
+                    <img class="imagemServico" src="assets/Corte.png" alt="">
+                    <p class="precoServico">R$ 25,00</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="rodape">
+        <img class="Logo" src="assets/Logo.jpeg">
+        <div class="contatos">
+            <p>@imperial.barbearia_</p>
+            <p>(11) 97283-1827</p>
+            <p>imperial.barbearia@gmail.com</p>
+        </div>
+        <div class="localContato">
+            <p>Rua balbalablablab, 110</p>
+        </div>
+    </div>
+
 
     <!-- Adicionando script da API do Google Maps -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=inicializarMapa"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=inicializarMapa"></script>
 
     <script>
         function inicializarMapa() {

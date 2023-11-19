@@ -4,8 +4,13 @@
 }
 
 body {
-    background-color: rgb(55, 55, 55);
-    height: 200rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-image: url('assets/fundo.png');
+    background-repeat: repeat;
+    background-size: 10% auto; /* Controla o dimensionamento da imagem de fundo */
 }
 
 h1 {
@@ -38,13 +43,20 @@ p {
     text-align: justify;
 }
 
-.cabecalho {
+.principal{
+    background-color: rgb(55, 55, 55);
+    margin: 0 auto;
+    width: 90%;
+}
+
+.cabecalho, .rodape {
+    width: 100%;
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 3%;
-    height: 2rem;
+    height: 4rem;
 }
 
 .cabecalho nav ul {
@@ -62,11 +74,10 @@ p {
     font-style: normal;
     cursor: pointer;
     margin-right: 20px;
-    /* Adicione uma margem direita para separar os itens */
 }
 
 .Logo {
-    height: 9rem;
+    height: 8rem;
 }
 
 .Main {
@@ -146,8 +157,18 @@ p {
     justify-content: center;
 }
 
-.nomeServico{
+.servico {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 7rem 3rem;
+}
+
+.nomeServico {
     position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -157,15 +178,36 @@ p {
     height: 3rem;
     background: #FFF;
     border-radius: 1.5rem 0rem 10rem 0rem;
+    z-index: 2; /* Garante que o texto fica sobre a imagem */
 }
 
-.imagemServico{
+.nomeServicoLongo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    width: 15rem;
+    height: 3rem;
+    background: #FFF;
+    border-radius: 1.5rem 0rem 10rem 0rem;
+    z-index: 2; /* Garante que o texto fica sobre a imagem */
+}
+
+
+.imagemServico {
     height: 20rem;
     border-radius: 1.5rem;
     border: 5px solid #000;
 }
 
-.precoServico{
+.precoServico {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,3 +218,4 @@ p {
     background: #F2B749;
     border-radius: 10rem 0rem 1.5rem 0rem;
 }
+
