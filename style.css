@@ -141,3 +141,38 @@ p {
     margin-bottom: 5em;
 }
 
+.servicos{
+    display: flex;
+    justify-content: center;
+}
+
+.nomeServico{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    width: 8rem;
+    height: 3rem;
+    background: #FFF;
+    border-radius: 1.5rem 0rem 10rem 0rem;
+}
+
+.imagemServico{
+    height: 20rem;
+    border-radius: 1.5rem;
+    border: 5px solid #000;
+}
+
+.precoServico{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    width: 10rem;
+    height: 3rem;
+    background: #F2B749;
+    border-radius: 10rem 0rem 1.5rem 0rem;
+}
