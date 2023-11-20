@@ -45,8 +45,8 @@ p {
 
 .principal{
     background-color: rgb(55, 55, 55);
-    margin: 0 auto;
-    width: 90%;
+    margin-top: 10rem; /* Ajuste conforme a altura do seu cabeçalho */
+    width: 80%;
 }
 
 .cabecalho, .rodape {
@@ -55,8 +55,14 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 3%;
-    height: 4rem;
+    height: 10rem;
+}
+
+.cabecalho{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .cabecalho nav ul {
@@ -219,3 +225,12 @@ p {
     border-radius: 10rem 0rem 1.5rem 0rem;
 }
 
+.linha{
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.icon{
+    margin-right: 1rem;
+    width: 2rem;
+}

@@ -12,8 +12,8 @@
     <header class="cabecalho">
         <nav>
             <ul class="ListNav">
-                <li><a href="index.html">SOBRE NÓS</a></li>
-                <li><a href="reserva.html">SERVIÇOS</a></li>
+                <li><a href="#sobreNos">SOBRE NÓS</a></li>
+                <li><a href="#servicos">SERVIÇOS</a></li>
                 <img class="Logo" src="assets/Logo.jpeg">
                 <li><a href="agendamento/agendar.php">AGENDAMENTO</a></li>
                 <li><a href="">LOGIN??</a></li>
@@ -27,7 +27,7 @@
                 <h1>BEM VINDO À IMPERIAL</h1>
             </div>
 
-            <div class="divisao">
+            <div class="divisao" id="sobreNos">
                 <h2>SOBRE NÓS</h2>
             </div>
 
@@ -44,7 +44,7 @@
                 <div id="mapa" style="height: 400px;"></div>
             </div>
 
-            <div class="divisao">
+            <div class="divisao" id="servicos">
                 <h2>SERVIÇOS</h2>
             </div>
             <div class="servicos">
@@ -85,20 +85,24 @@
     </div>
     <div class="rodape">
         <img class="Logo" src="assets/Logo.jpeg">
-        <div class="contatos">
+        <div class="linha">
+            <img class="icon" src="assets/instagram.png" alt="">
             <p>@imperial.barbearia_</p>
-            <p>(11) 97283-1827</p>
-            <p>imperial.barbearia@gmail.com</p>
         </div>
-        <div class="localContato">
-            <p>Rua balbalablablab, 110</p>
+        <div class="linha">
+            <img class="icon" src="assets/whatsapp.png" alt="">
+            <p>(11) 97283-1827</p>
+        </div>
+        <div class="linha">
+            <img class="icon" src="assets/mail.png" alt="">
+            <p>imperial.barbearia@gmail.com</p>
         </div>
     </div>
 
 
     <!-- Adicionando script da API do Google Maps -->
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API&callback=inicializarMapa"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSiJC5CmRMKpD4IvwMklOppFXDkWdy9zA&callback=inicializarMapa"></script>
 
     <script>
         function inicializarMapa() {
@@ -119,6 +123,33 @@
                 title: 'Imperial Barbearia'
             });
         }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Função para rolar suavemente para uma seção
+            function scrollSmoothly(targetId) {
+                var targetElement = document.getElementById(targetId);
+                var headerHeight = document.querySelector('.cabecalho').offsetHeight;
+                var targetPosition = targetElement.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Adiciona um ouvinte de evento para o botão "SOBRE NÓS"
+            document.querySelector('a[href="#sobreNos"]').addEventListener('click', function (e) {
+                e.preventDefault();
+                scrollSmoothly('sobreNos');
+            });
+
+            // Adiciona um ouvinte de evento para o botão "SERVIÇOS"
+            document.querySelector('a[href="#servicos"]').addEventListener('click', function (e) {
+                e.preventDefault();
+                scrollSmoothly('servicos');
+            });
+        });
+
     </script>
 </body>
 
