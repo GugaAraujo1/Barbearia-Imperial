@@ -1,98 +1,3 @@
-<?php
-// Incluir arquivo de configuração
-require_once "config.php";
-
-// Defina variáveis e inicialize com valores vazios
-$nome = $servico = $data_agendamento = $horario = "";
-$nome_err = $servico_err = $data_agendamento_err = $horario_err = "";
-
-// Processando dados do formulário quando o formulário é enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Validar nome
-    if (empty(trim($_POST["nome"]))) {
-        $nome_err = "Digite seu nome.";
-    } else {
-        $nome = trim($_POST["nome"]);
-    }
-
-    // Validar serviço
-    if (empty(trim($_POST["servico"]))) {
-        $servico_err = "Selecione o serviço";
-    } else {
-        $servico = trim($_POST["servico"]);
-    }
-
-    // Validar data de agendamento
-    if (empty(trim($_POST["data_agendamento"]))) {
-        $data_agendamento_err = "Selecione a data de agendamento";
-    } else {
-        $data_agendamento = trim($_POST["data_agendamento"]);
-    }
-
-    // Validar horário
-    if (empty(trim($_POST["horario"]))) {
-        $horario_err = "Selecione o horário";
-    } else {
-        $horario = trim($_POST["horario"]);
-    }
-
-    $sql_verificar_disponibilidade = "SELECT id_agendamento FROM agendamentos WHERE data_agendamento = :data_agendamento AND horario = :horario";
-
-    if ($stmt_verificar = $pdo->prepare($sql_verificar_disponibilidade)) {
-        $stmt_verificar->bindParam(":data_agendamento", $data_agendamento, PDO::PARAM_STR);
-        $stmt_verificar->bindParam(":horario", $horario, PDO::PARAM_STR);
-
-        if ($stmt_verificar->execute()) {
-            if ($stmt_verificar->rowCount() > 0) {
-                $horario_err = "Este horário já está ocupado para a data selecionada.";
-            }
-        } else {
-            echo "Ops! Algo deu errado ao verificar a disponibilidade. Por favor, tente novamente mais tarde.";
-        }
-
-        unset($stmt_verificar);
-    }
-
-    // Verifique os erros de entrada antes de inserir no banco de dados
-    if (empty($nome_err) && empty($servico_err) && empty($data_agendamento_err) && empty($horario_err)) {
-
-        // Prepare uma declaração de inserção
-        $sql = "INSERT INTO agendamentos (nome, servico, data_agendamento, horario) VALUES (:nome, :servico, :data_agendamento, :horario)";
-
-        if ($stmt = $pdo->prepare($sql)) {
-            // Vincule as variáveis à instrução preparada como parâmetros
-            $stmt->bindParam(":nome", $param_nome, PDO::PARAM_STR);
-            $stmt->bindParam(":servico", $param_servico, PDO::PARAM_STR);
-            $stmt->bindParam(":data_agendamento", $param_data_agendamento, PDO::PARAM_STR);
-            $stmt->bindParam(":horario", $param_horario, PDO::PARAM_STR);
-
-            // Definir parâmetros
-            $param_nome = $nome;
-            $param_servico = $servico;
-            $param_data_agendamento = $data_agendamento;
-            $param_horario = $horario;
-
-            // Tente executar a declaração preparada
-            if ($stmt->execute()) {
-                // Redirecionar para a página de login
-                header("location: ../index.html");
-                exit(); // Certifique-se de sair após o redirecionamento
-            } else {
-                echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
-            }
-
-            // Fechar declaração
-            unset($stmt);
-        }
-    }
-}
-
-// Fechar conexão
-unset($pdo);
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -154,7 +59,7 @@ unset($pdo);
             </div>
         </div>
         <div class="wrapper">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
                     <p class="tituloForm">DIGITE SEU NOME</p>
                     <input type="text" name="nome"
@@ -165,10 +70,18 @@ unset($pdo);
                     </span>
                 </div>
                 <div class="form-group">
+                    <p class="tituloForm">DIGITE SEU SOBRENOME</p>
+                    <input type="text" name="sobrenome"
+                        class="form-control <?php echo (!empty($sobrenome_err)) ? 'is-invalid' : ''; ?>"
+                        value="<?php echo $sobrenome; ?>">
+                    <span class="invalid-feedback">
+                        <?php echo $sobrenome_err; ?>
+                    </span>
+                </div>
+                <div class="form-group">
                     <p class="tituloForm">SELECIONE O SERVIÇO</p>
                     <select name="servico"
                         class="form-control <?php echo (!empty($servico_err)) ? 'is-invalid' : ''; ?>">
-                        <option value=""></option>
                         <option value="Corte">Corte</option>
                         <option value="Barba">Barba</option>
                         <option value="Corte e Barba">Corte e Barba</option>
@@ -191,10 +104,10 @@ unset($pdo);
                         <p class="tituloForm">HORÁRIO</p>
                         <select name="horario"
                             class="form-control <?php echo (!empty($horario_err)) ? 'is-invalid' : ''; ?>">
-                            <option value=""></option>
                             <?php
                             $hora_inicio = strtotime('08:00');
                             $hora_fim = strtotime('19:00');
+                
                             while ($hora_inicio <= $hora_fim) {
                                 echo '<option value="' . date('H:i', $hora_inicio) . '">' . date('H:i', $hora_inicio) . '</option>';
                                 $hora_inicio = strtotime('+30 minutes', $hora_inicio);
