@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +23,9 @@ session_start();
                 <?php
                     // Verifica se o usuário está logado
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-                        // Se estiver logado, mostra o nome do usuário
-                        echo '<li><a href="#">'.$_SESSION["usuario"].'</a></li>';
+                        // Se estiver logado, mostra o nome do usuário e o botão LOGOUT
+                        echo '<li><a>'. strtoupper($_SESSION["usuario"]).'</a></li>';
+                        echo '<a href="login/logout.php" class="btn btn-danger ml-3">LOGOUT</a>';
                     } else {
                         // Se não estiver logado, mostra o botão de login
                         echo '<li><a href="login/login.php">LOGIN</a></li>';

@@ -2,6 +2,16 @@
 // Incluir arquivo de configuração
 require_once "config.php";
 
+// Inicialize a sessão
+session_start();
+
+// Verificar se o usuário está logado
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    // Se estiver logado, preencher automaticamente o campo de nome
+    $nome = $_SESSION["nome"];
+}
+
+
 // Defina variáveis e inicialize com valores vazios
 $nome = $servico = $data_agendamento = $horario = "";
 $nome_err = $servico_err = $data_agendamento_err = $horario_err = "";
@@ -106,14 +116,24 @@ unset($pdo);
 </head>
 
 <body>
-    <header class="cabecalho">
+<header class="cabecalho">
         <nav>
             <ul class="ListNav">
                 <li><a href="../#sobreNos">SOBRE NÓS</a></li>
                 <li><a href="../#servicos">SERVIÇOS</a></li>
                 <img class="Logo" src="../assets/Logo.jpeg">
-                <li><a href="">AGENDAMENTO</a></li>
-                <li><a href="">LOGIN??</a></li>
+                <li><a href="agendar.php">AGENDAMENTO</a></li>
+                <?php
+                    // Verifica se o usuário está logado
+                    if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                        // Se estiver logado, mostra o nome do usuário e o botão LOGOUT
+                        echo '<li><a>'. strtoupper($_SESSION["usuario"]).'</a></li>';
+                        echo '<a href="../login/logout.php" class="btn btn-danger ml-3">LOGOUT</a>';
+                    } else {
+                        // Se não estiver logado, mostra o botão de login
+                        echo '<li><a href="../login/login.php">LOGIN</a></li>';
+                    }
+                ?>
             </ul>
         </nav>
     </header>
