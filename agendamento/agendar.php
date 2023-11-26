@@ -5,16 +5,15 @@ require_once "config.php";
 // Inicialize a sessão
 session_start();
 
-// Verificar se o usuário está logado
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    // Se estiver logado, preencher automaticamente o campo de nome
-    $nome = $_SESSION["nome"];
-}
-
-
 // Defina variáveis e inicialize com valores vazios
 $nome = $servico = $data_agendamento = $horario = "";
 $nome_err = $servico_err = $data_agendamento_err = $horario_err = "";
+
+// Verificar se o usuário está logado
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    // Se estiver logado, definir o valor padrão para o campo "nome"
+    $nome = $_SESSION["nome"];
+}
 
 // Processando dados do formulário quando o formulário é enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -86,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Tente executar a declaração preparada
             if ($stmt->execute()) {
                 // Redirecionar para a página de login
-                header("location: ../index.html");
+                header("location: ../index.php");
                 exit(); // Certifique-se de sair após o redirecionamento
             } else {
                 echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
@@ -113,22 +112,33 @@ unset($pdo);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="../style.css">
+    <style>
+        .cabecalho nav ul li a.user {
+            color: white;
+        }
+        .cabecalho nav ul a.logout {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-<header class="cabecalho">
+    <header class="cabecalho">
         <nav>
             <ul class="ListNav">
                 <li><a href="../#sobreNos">SOBRE NÓS</a></li>
                 <li><a href="../#servicos">SERVIÇOS</a></li>
-                <img class="Logo" src="../assets/Logo.jpeg">
+                <a href="../index.php">
+                    <img class="Logo" src="../assets/Logo.jpeg" alt="Logo Imperial">
+                </a>
                 <li><a href="agendar.php">AGENDAMENTO</a></li>
                 <?php
                     // Verifica se o usuário está logado
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-                        // Se estiver logado, mostra o nome do usuário e o botão LOGOUT
-                        echo '<li><a>'. strtoupper($_SESSION["usuario"]).'</a></li>';
-                        echo '<a href="../login/logout.php" class="btn btn-danger ml-3">LOGOUT</a>';
+                        // Se estiver logado, mostra o nome do usuário
+                        echo '<li><a class="user" id="userLink">'. strtoupper($_SESSION["usuario"]).'</a></li>';
+                        // Adiciona o botão LOGOUT, inicialmente oculto
+                        echo '<a href="../login/logout.php" class="logout" id="logoutLink" style="display: none;">LOGOUT</a>';
                     } else {
                         // Se não estiver logado, mostra o botão de login
                         echo '<li><a href="../login/login.php">LOGIN</a></li>';
@@ -175,15 +185,13 @@ unset($pdo);
         </div>
         <div class="wrapper">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="form-group">
-                    <p class="tituloForm">DIGITE SEU NOME</p>
-                    <input type="text" name="nome"
-                        class="form-control <?php echo (!empty($nome_err)) ? 'is-invalid' : ''; ?>"
-                        value="<?php echo $nome; ?>">
-                    <span class="invalid-feedback">
-                        <?php echo $nome_err; ?>
-                    </span>
-                </div>
+            <div class="form-group">
+                <p class="tituloForm">DIGITE SEU NOME</p>
+                <input type="text" name="nome" class="form-control <?php echo (!empty($nome_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>">
+                <span class="invalid-feedback">
+                    <?php echo $nome_err; ?>
+                </span>
+            </div>
                 <div class="form-group">
                     <p class="tituloForm">SELECIONE O SERVIÇO</p>
                     <select name="servico"
@@ -271,6 +279,23 @@ unset($pdo);
                     return (date.getDay() === 0);
                 }
             ],
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Função para alternar a visibilidade do botão de logout
+            function toggleLogoutButton() {
+                var logoutButton = document.getElementById('logoutLink');
+                // Se o botão de logout estiver visível, oculta; se estiver oculto, mostra
+                logoutButton.style.display = (logoutButton.style.display === 'none') ? 'block' : 'none';
+            }
+
+            // Adiciona um ouvinte de evento para o link do usuário
+            document.getElementById('userLink').addEventListener('click', function (e) {
+                e.preventDefault();
+                // Chama a função para alternar a visibilidade do botão de logout
+                toggleLogoutButton();
+            });
         });
     </script>
 

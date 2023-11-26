@@ -10,6 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Imperial</title>
+    <style>
+        .cabecalho nav ul li a.user {
+            color: white;
+        }
+        .cabecalho nav ul a.logout {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,14 +26,17 @@
             <ul class="ListNav">
                 <li><a href="#sobreNos">SOBRE NÓS</a></li>
                 <li><a href="#servicos">SERVIÇOS</a></li>
-                <img class="Logo" src="assets/Logo.jpeg">
+                <a href="index.php">
+                    <img class="Logo" src="assets/Logo.jpeg" alt="Logo Imperial">
+                </a>
                 <li><a href="agendamento/agendar.php">AGENDAMENTO</a></li>
                 <?php
                     // Verifica se o usuário está logado
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-                        // Se estiver logado, mostra o nome do usuário e o botão LOGOUT
-                        echo '<li><a>'. strtoupper($_SESSION["usuario"]).'</a></li>';
-                        echo '<a href="login/logout.php" class="btn btn-danger ml-3">LOGOUT</a>';
+                        // Se estiver logado, mostra o nome do usuário
+                        echo '<li><a class="user" id="userLink">'. strtoupper($_SESSION["usuario"]).'</a></li>';
+                        // Adiciona o botão LOGOUT, inicialmente oculto
+                        echo '<a href="login/logout.php" class="logout" id="logoutLink" style="display: none;">LOGOUT</a>';
                     } else {
                         // Se não estiver logado, mostra o botão de login
                         echo '<li><a href="login/login.php">LOGIN</a></li>';
@@ -164,6 +175,24 @@
             });
         });
 
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Função para alternar a visibilidade do botão de logout
+            function toggleLogoutButton() {
+                var logoutButton = document.getElementById('logoutLink');
+                // Se o botão de logout estiver visível, oculta; se estiver oculto, mostra
+                logoutButton.style.display = (logoutButton.style.display === 'none') ? 'block' : 'none';
+            }
+
+            // Adiciona um ouvinte de evento para o link do usuário
+            document.getElementById('userLink').addEventListener('click', function (e) {
+                e.preventDefault();
+                // Chama a função para alternar a visibilidade do botão de logout
+                toggleLogoutButton();
+            });
+        });
     </script>
 </body>
 
