@@ -162,12 +162,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>    
             <div class="form-group">
                 <label>Senha</label>
-                <input type="senha" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>">
+                <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>">
                 <span class="invalid-feedback"><?php echo $senha_err; ?></span>
             </div>
             <div class="form-group">
                 <label>Confirme a senha</label>
-                <input type="senha" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>">
+                <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>">
                 <span class="invalid-feedback"><?php echo $confirmar_senha_err; ?></span>
             </div>
             <div class="form-group">

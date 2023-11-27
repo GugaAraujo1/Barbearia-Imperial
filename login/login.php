@@ -83,42 +83,62 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Por favor, preencha os campos para fazer o login.</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header class="cabecalho">
+            <nav>
+                <ul class="ListNav">
+                    <li><a href="../#sobreNos">SOBRE NÓS</a></li>
+                    <li><a href="../#servicos">SERVIÇOS</a></li>
+                    <a href="../index.php">
+                        <img class="Logo" src="../assets/Logo.jpeg" alt="Logo Imperial">
+                    </a>
+                    <li><a href="../agendamento/agendar.php">AGENDAMENTO</a></li>
+                    <?php
+                        // Verifica se o usuário está logado
+                        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                            // Se estiver logado, mostra o nome do usuário
+                            echo '<li><a class="user" id="userLink">'. strtoupper($_SESSION["usuario"]).'</a></li>';
+                            // Adiciona o botão LOGOUT, inicialmente oculto
+                            echo '<a href="../login/logout.php" class="logout" id="logoutLink" style="display: none;">LOGOUT</a>';
+                        } else {
+                            // Se não estiver logado, mostra o botão de login
+                            echo '<li><a href="../login/login.php">LOGIN</a></li>';
+                        }
+                    ?>
+                </ul>
+            </nav>
+        </header>
+        <div class="principal">
+            <div class="wrapper">
+                <?php 
+                if(!empty($login_err)){
+                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                }        
+                ?>
 
-        <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
-
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Nome do usuário</label>
-                <input type="text" name="usuario" class="form-control <?php echo (!empty($usuario_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $usuario; ?>">
-                <span class="invalid-feedback"><?php echo $usuario_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Senha</label>
-                <input type="senha" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $senha_err; ?></span>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group">
+                        <h2>USUÁRIO</h2>
+                        <input type="text" name="usuario" class="form-control <?php echo (!empty($usuario_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $usuario; ?>">
+                        <span class="invalid-feedback"><?php echo $usuario_err; ?></span>
+                    </div>    
+                    <div class="form-group">
+                        <h2>SENHA</h2>
+                        <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $senha_err; ?></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Entrar">
+                    </div>
+                    <p>Não tem uma conta? <a href="cadastro.php">Inscreva-se agora</a>.</p>
+                </form>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Entrar">
-            </div>
-            <p>Não tem uma conta? <a href="cadastro.php">Inscreva-se agora</a>.</p>
-        </form>
-    </div>
-</body>
+        </div>
+    </body>
 </html>
