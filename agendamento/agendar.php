@@ -111,7 +111,7 @@ unset($pdo);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .cabecalho nav ul li a.user {
             color: white;

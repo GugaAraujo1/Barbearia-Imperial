@@ -86,8 +86,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
         <header class="cabecalho">
@@ -114,7 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </ul>
             </nav>
         </header>
-        <div class="principal">
+        <div class="principalLogin">
             <div class="wrapper">
                 <?php 
                 if(!empty($login_err)){
@@ -133,10 +133,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $senha_err; ?></span>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Entrar">
+                    <div class="botoes">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="ENTRAR">
+                        </div>
+                        <a class="cadastro" href="cadastro.php">CRIAR UMA CONTA NOVA!</a>
                     </div>
-                    <p>Não tem uma conta? <a href="cadastro.php">Inscreva-se agora</a>.</p>
+
                 </form>
             </div>
         </div>
