@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="estilos.css">
     <title>Imperial</title>
     <style>
         .cabecalho nav ul li a.user {
@@ -35,8 +35,9 @@
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                         // Se estiver logado, mostra o nome do usuário
                         echo '<li><a class="user" id="userLink">'. strtoupper($_SESSION["usuario"]).'</a></li>';
-                        // Adiciona o botão LOGOUT, inicialmente oculto
+                         // Adiciona o botão LOGOUT, inicialmente oculto
                         echo '<a href="login/logout.php" class="logout" id="logoutLink" style="display: none;">LOGOUT</a>';
+
                     } else {
                         // Se não estiver logado, mostra o botão de login
                         echo '<li><a href="login/login.php">LOGIN</a></li>';
@@ -46,7 +47,6 @@
         </nav>
     </header>
     <div class="principal">
-
         <main>
             <div class="Titulo">
                 <h1>BEM VINDO À IMPERIAL</h1>
@@ -58,13 +58,13 @@
 
             <div class="sobreNos">
                 <p>Texto aqui sobre a barbeariablabla balbalbbal balba l b a lba lba l b a l a bl a b l a b b a la b l a
-                    bl a b labl a bl abal b la bl ab a lbalbalbalba lbl abalbl ablabalbalbal balbalbalb alb a l b a l a
+                    bl a babl a bl abal b la bl ab a lbalbalbalba lbl abalbl ablabalbalbal balbalbalb alb a l b a l a
                     b l a b l a b lab l a b l a b a l b a l b a l b a l b albaa</p>
-                <img class="Img" src="" alt="ImagemSobreNos">
+                <img class="imagemServico" src="assets/Imagem.png" alt="ImagemSobreNos">
             </div>
 
             <div class="localizacao">
-                <p>Venha visitar a barbearia! Estamos localizados na rua blabalbalbalba</p>
+                <p>Venha visitar a barbearia! Estamos localizados na Rua Estrada das Lágrimas, 3880!</p>
                 <!-- Div para o mapa -->
                 <div id="mapa" style="height: 400px;"></div>
             </div>
@@ -76,34 +76,17 @@
                 <div class="servico">
                     <p class="nomeServico">CORTE</p>
                     <img class="imagemServico" src="assets/Corte.png" alt="">
-                    <p class="precoServico">R$ 25,00</p>
+                    <p class="precoServico">R$ 30,00</p>
                 </div>
                 <div class="servico">
                     <p class="nomeServico">BARBA</p>
-                    <img class="imagemServico" src="assets/Corte.png" alt="">
-                    <p class="precoServico">R$ 25,00</p>
+                    <img class="imagemServico" src="assets/Barba.jpg" alt="" style="width: 20rem; object-fit: cover;">
+                    <p class="precoServico">R$ 30,00</p>
                 </div>
-                <div class="servico">
-                    <p class="nomeServicoLongo">CORTE E BARBA</p>
-                    <img class="imagemServico" src="assets/Corte.png" alt="">
-                    <p class="precoServico">R$ 25,00</p>
-                </div>
-            </div>
-            <div class="servicos">
                 <div class="servico">
                     <p class="nomeServicoLongo">SOBRANCELHA</p>
-                    <img class="imagemServico" src="assets/Corte.png" alt="">
-                    <p class="precoServico">R$ 25,00</p>
-                </div>
-                <div class="servico">
-                    <p class="nomeServico">balbalbla</p>
-                    <img class="imagemServico" src="assets/Corte.png" alt="">
-                    <p class="precoServico">R$ 25,00</p>
-                </div>
-                <div class="servico">
-                    <p class="nomeServicoLongo">balblabalbalbal</p>
-                    <img class="imagemServico" src="assets/Corte.png" alt="">
-                    <p class="precoServico">R$ 25,00</p>
+                    <img class="imagemServico" src="assets/Sobrancelha.jpg" alt="" style="width: 20rem; object-fit: cover;">
+                    <p class="precoServico">R$ 5,00</p>
                 </div>
             </div>
         </main>
@@ -132,7 +115,7 @@
     <script>
         function inicializarMapa() {
             // Coordenadas da sua localização no Google Maps
-            var coordenadas = { lat: -23.550520, lng: -46.633308 };
+            var coordenadas = { lat: -23.630816, lng: -46.585837 };
 
             // Opções do mapa
             var opcoesMapa = {
@@ -176,7 +159,6 @@
         });
 
     </script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Função para alternar a visibilidade do botão de logout
@@ -194,6 +176,26 @@
             });
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Função para redirecionar para a página adequada ao clicar no nome do usuário
+            function redirectToPage() {
+                // Verifica se o usuário é "adm" e redireciona para a página correta
+                if ("<?php echo $_SESSION["usuario"]; ?>" === "adm") {
+                    window.location.href = "agendamento/agendamentos.php";
+                } 
+            }
+
+            // Adiciona um ouvinte de evento para o link do usuário
+            document.getElementById('userLink').addEventListener('click', function (e) {
+                e.preventDefault();
+                // Chama a função para redirecionar para a página adequada
+                redirectToPage();
+            });
+        });
+    </script>
+
 </body>
 
 </html>

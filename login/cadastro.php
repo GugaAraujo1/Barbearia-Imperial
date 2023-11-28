@@ -140,7 +140,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Cadastro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../estilos.css">
+    <style>
+        .principal p{
+            font-size: 0.7rem;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header class="cabecalho">
@@ -167,33 +173,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </ul>
         </nav>
     </header>
-    <div class="principal">
+    <div class="principalLogin">
         <div class="wrapper">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
-                    <h2>SEU NOME</h2>
-                    <input type="text" name="nome" class="form-control <?php echo (!empty($nome_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>">
+                    <p>SEU NOME</p>
+                    <input type="text" name="nome" class="form-control <?php echo (!empty($nome_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>"style="width: 40rem; height: 3rem; border-radius: 0.7rem;">
                     <span class="invalid-feedback"><?php echo $nome_err; ?></span>
                 </div>
                 <div class="form-group">
-                    <h2>USUÁRIO</h2>
-                    <input type="text" name="usuario" class="form-control <?php echo (!empty($usuario_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $usuario; ?>">
+                    <p>USUÁRIO</p>
+                    <input type="text" name="usuario" class="form-control <?php echo (!empty($usuario_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $usuario; ?>"style="width: 40rem; height: 3rem; border-radius: 0.7rem;">
                     <span class="invalid-feedback"><?php echo $usuario_err; ?></span>
                 </div>    
                 <div class="form-group">
-                    <h2>SENHA</h2>
-                    <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>">
+                    <p>SENHA</p>
+                    <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>"style="width: 40rem; height: 3rem; border-radius: 0.7rem;">
                     <span class="invalid-feedback"><?php echo $senha_err; ?></span>
                 </div>
                 <div class="form-group">
-                    <h2>CONFIRME A SENHA</h2>
-                    <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>">
+                    <p>CONFIRME A SENHA</p>
+                    <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>"style="width: 40rem; height: 3rem; border-radius: 0.7rem;">
                     <span class="invalid-feedback"><?php echo $confirmar_senha_err; ?></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Criar Conta">
+                <div class="botoes">
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="CRIAR CONTA" style="width: 20rem; height: 4rem;">
+                    </div>
+                    <div class="entreaqui">
+                        
+                        <a class="secundario" href="login.php"  style="width: 15rem; height: 4rem;">JÁ TENHO UMA CONTA!</a>
+                    </div>
                 </div>
-                <p>Já tem uma conta? <a href="login.php">Entre aqui</a>.</p>
             </form>
         </div>    
     </div>
