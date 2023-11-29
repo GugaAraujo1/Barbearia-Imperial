@@ -283,23 +283,6 @@ unset($pdo);
             ],
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Função para alternar a visibilidade do botão de logout
-            function toggleLogoutButton() {
-                var logoutButton = document.getElementById('logoutLink');
-                // Se o botão de logout estiver visível, oculta; se estiver oculto, mostra
-                logoutButton.style.display = (logoutButton.style.display === 'none') ? 'block' : 'none';
-            }
-
-            // Adiciona um ouvinte de evento para o link do usuário
-            document.getElementById('userLink').addEventListener('click', function (e) {
-                e.preventDefault();
-                // Chama a função para alternar a visibilidade do botão de logout
-                toggleLogoutButton();
-            });
-        });
-    </script>
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {

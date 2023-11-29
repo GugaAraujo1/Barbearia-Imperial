@@ -57,9 +57,9 @@
             </div>
 
             <div class="sobreNos">
-                <p>Texto aqui sobre a barbeariablabla balbalbbal balba l b a lba lba l b a l a bl a b l a b b a la b l a
-                    bl a babl a bl abal b la bl ab a lbalbalbalba lbl abalbl ablabalbalbal balbalbalb alb a l b a l a
-                    b l a b l a b lab l a b l a b a l b a l b a l b a l b albaa</p>
+                <p style="width: 45rem;">
+                    Bem-vindo à Barbearia Imperial, onde a tradição se encontra com o estilo contemporâneo. Somos mais do que uma barbearia, somos um refúgio para aqueles que buscam excelência em cortes de cabelo e uma experiência única. Nossa equipe apaixonada de barbeiros combina habilidade e inovação para criar looks impecáveis, proporcionando um ambiente acolhedor e amigável. Na Barbearia Imperial, não apenas transformamos cabelos, mas também cultivamos uma comunidade que valoriza a autenticidade, confiança e o cuidado pessoal. Explore nossos serviços premium e junte-se a nós para uma jornada onde a tradição e a modernidade se encontram, criando histórias de estilo inesquecíveis.
+                </p>
                 <img class="imagemServico" src="assets/Imagem.png" alt="ImagemSobreNos">
             </div>
 
@@ -160,41 +160,33 @@
 
     </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Função para alternar a visibilidade do botão de logout
-            function toggleLogoutButton() {
-                var logoutButton = document.getElementById('logoutLink');
-                // Se o botão de logout estiver visível, oculta; se estiver oculto, mostra
-                logoutButton.style.display = (logoutButton.style.display === 'none') ? 'block' : 'none';
-            }
+    document.addEventListener("DOMContentLoaded", function () {
+        // Função para alternar a visibilidade do botão de logout
+        function toggleLogoutButton() {
+            var logoutButton = document.getElementById('logoutLink');
+            // Se o botão de logout estiver visível, oculta; se estiver oculto, mostra
+            logoutButton.style.display = (logoutButton.style.display === 'none') ? 'block' : 'none';
+        }
 
-            // Adiciona um ouvinte de evento para o link do usuário
-            document.getElementById('userLink').addEventListener('click', function (e) {
-                e.preventDefault();
-                // Chama a função para alternar a visibilidade do botão de logout
+        // Função para redirecionar para a página adequada ao clicar no nome do usuário
+        function redirectToPage() {
+            // Verifica se o usuário é "adm" e redireciona para a página correta
+            if ("<?php echo $_SESSION["usuario"]; ?>" === "adm") {
+                window.location.href = "agendamento/agendamentos.php";
+            } else {
+                // Se não for "adm", mostra o botão de logout
                 toggleLogoutButton();
-            });
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Função para redirecionar para a página adequada ao clicar no nome do usuário
-            function redirectToPage() {
-                // Verifica se o usuário é "adm" e redireciona para a página correta
-                if ("<?php echo $_SESSION["usuario"]; ?>" === "adm") {
-                    window.location.href = "agendamento/agendamentos.php";
-                } 
             }
+        }
 
-            // Adiciona um ouvinte de evento para o link do usuário
-            document.getElementById('userLink').addEventListener('click', function (e) {
-                e.preventDefault();
-                // Chama a função para redirecionar para a página adequada
-                redirectToPage();
-            });
+        // Adiciona um ouvinte de evento para o link do usuário
+        document.getElementById('userLink').addEventListener('click', function (e) {
+            e.preventDefault();
+            // Chama a função para redirecionar para a página adequada
+            redirectToPage();
         });
-    </script>
+    });
+</script>
 
 </body>
 
