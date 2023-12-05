@@ -88,6 +88,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <title>Login</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="../estilos.css">
+        <style>
+        /* Adiciona estilo personalizado para os inputs */
+        .form-control-large {
+            text-align: center;
+        }
+    </style>
     </head>
     <body>
         <header class="cabecalho">
@@ -125,12 +131,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group">
                         <h2>USUÁRIO</h2>
-                        <input type="text" name="usuario" class="form-control <?php echo (!empty($usuario_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $usuario; ?>" style="width: 50rem; height: 4rem; border-radius: 0.7rem;">
+                        <input type="text" name="usuario" class="form-control form-control-large <?php echo (!empty($usuario_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $usuario; ?>" style="width: 50rem; height: 4rem; border-radius: 0.7rem;">
                         <span class="invalid-feedback"><?php echo $usuario_err; ?></span>
                     </div>    
                     <div class="form-group">
                         <h2>SENHA</h2>
-                        <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" style="width: 50rem; height: 4rem; border-radius: 0.7rem;">
+                        <input type="password" name="senha" class="form-control form-control-large <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" style="width: 50rem; height: 4rem; border-radius: 0.7rem;">
                         <span class="invalid-feedback"><?php echo $senha_err; ?></span>
                     </div>
                     <div class="botoes">
@@ -139,7 +145,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         </div>
                         <a class="secundario" href="cadastro.php" style="width: 15rem; height: 4rem;">CRIAR UMA CONTA NOVA!</a>
                     </div>
-
                 </form>
             </div>
         </div>

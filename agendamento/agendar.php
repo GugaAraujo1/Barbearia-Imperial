@@ -200,7 +200,7 @@ unset($pdo);
                             <option value=""></option>
                             <option value="Corte">Corte</option>
                             <option value="Barba">Barba</option>
-                            <option value="Corte e Barba">Corte e Barba</option>
+                            <option value="Sobrancelha">Sobrancelha</option>
                         </select>
                         <span class="invalid-feedback">
                             <?php echo $servico_err; ?>
